@@ -1,6 +1,19 @@
+import { useState } from 'react'
 import './App.css'
+import Shop from './Shop'
 
 function App() {
+
+  const [inShopView, setInShopView] = useState(false)
+  const [homeVisible, setHomeVisible] = useState(true)
+
+  const handleSetShopView = () => {
+    setHomeVisible(false)
+    setTimeout(() => {
+      setInShopView(true)
+    }, 500);
+    
+  }
 
   return (
     <div id='app-container'>
@@ -17,11 +30,26 @@ function App() {
       <img id='img-11' src="https://images.unsplash.com/photo-1495490140452-5a226aef25d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" />
       <img id='img-12' src="https://images.unsplash.com/photo-1515541474431-4d8de9207620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="" />
       <div id='app-hero-text'>
-      <h1>Another Clothing Store</h1>
-      <h2>You should still check us out though.</h2>
-      <button>Shop</button>
+        {
+          inShopView
+            ?
+            <div id='shop-container' className={`${inShopView ? 'shop-visible' : ''}`}>
+            <Shop />
+            </div>
+            :
+            <div className={`${homeVisible ? 'home-visible' : 'home-invisible'}`}>
+              <h1>Another Clothing Store</h1>
+              <h2>You should still check us out though.</h2>
+              <button onClick={handleSetShopView}>Shop</button>
+            </div>
+        }
+
+
       </div>
-      
+      <div>
+        <p>Item Here</p>
+        <button >Buy</button>
+      </div>
     </div>
   )
 }

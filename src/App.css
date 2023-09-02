@@ -62,6 +62,24 @@ img {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect */
 }
 
+.home-invisible {
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.shop-visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#shop-container {
+  border: 1px solid white;
+  width: 100%;
+
+}
+
+
 @media (min-width: 600px) {
   #app-container {
     display: flex;
